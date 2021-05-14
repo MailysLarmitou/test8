@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+		<title> MINISITE MICROFILMS </title>
+
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" type="text/css" href="style/reset.css">
+
+		<link rel="stylesheet" type="text/css" href="style/stylemicrofilms.css">
+
+		<script type="text/javascript"src="js/jquery.js"> </script>
+
+
+</head>
+
+
+<body>
+
+<nav>
+	
+	<a href="pagememex.html">
+		<img src="import/flechejaune.png" alt="bouton retour accueil" id="flèche">
+	</a>
+	
+
+</nav>	
+
+<section>
+
+
+	<article>
+
+	<div id="info">
+
+
+		<h4>les microfilms</h4>
+
+		<p>
+		Ce boitier permet de stocker des documents puis de les intégrer sur l’écran. Ce système de nos jours peut être assimilé à une clé usb, une carte SD, un disque dur externe. 
+		<br><br>
+		Glisse le microfilm dans le boîtier et faites apparaitre un document sur l’écran.
+		</p>
+
+	</div>
+
+	</article>
+
+
+	<aside>
+	
+		<aside id="conteneur">
+
+			<div class="case" id="case1">
+	       		<div class="base" draggable="true"> <img src="import/microfilm.png"></div>
+	   		 	</div>
+
+	    	<div class="case" id="case2"></div>
+
+		</aside>
+		
+
+	</aside>
+
+<a href="ecrans2.html"><h5>Écrans</h5></a>
+
+
+</section>
+
+
+<script type="text/javascript">
+	
+const base = document.querySelector('.base');
+const box = document.querySelectorAll('.case');
+
+
+
+base.addEventListener('dragstart', dragStart);
+base.addEventListener('dragend', dragEnd);
+
+
+function dragStart() {
+    this.className += ' tenu';
+
+    setTimeout(() => (this.className = 'invisible'), 0);
+}
+
+function dragEnd() {
+    this.className = 'base';
+}
+
+
+for (const vide of box) {
+
+    vide.addEventListener('dragover', dragOver);
+
+    vide.addEventListener('dragenter', dragEnter);
+
+    vide.addEventListener('dragleave', dragLeave);
+
+    vide.addEventListener('drop', dragDrop);
+
+
+}
+
+
+
+function dragOver(e) {
+    e.preventDefault()
+
+
+}
+
+function dragEnter(e) {
+    e.preventDefault();
+    this.className += ' hovered';
+}
+
+function dragLeave() {
+    this.className = 'case';
+}
+
+
+function dragDrop() {
+    this.className = 'case';
+    this.append(base);
+}
+
+</script>
+
+	</body>
+
+
+
+</html>
